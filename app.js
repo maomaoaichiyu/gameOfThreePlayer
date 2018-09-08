@@ -34,3 +34,7 @@ socket.on('game-over', function (message) {
     console.log(':(');
   }
 });
+
+socket.on('disconnect', function(){
+  console.log('Disconnected from the server');
+});
