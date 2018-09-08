@@ -33,6 +33,7 @@ socket.on('game-over', function (message) {
   } else {
     console.log(':(');
   }
+  socket.disconnect();
 });
 
 socket.on('disconnect', function(){
