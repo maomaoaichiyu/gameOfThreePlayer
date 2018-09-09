@@ -10,6 +10,7 @@ socket.on('start', function() {
   console.log('This player is the one to start.');
   // initial number in range [50, 150)
   let init_number = 50 + Math.floor(Math.random() * 100);
+  console.log(`Sending ${init_number} to start the game`);
   socket.emit('number', init_number);
 });
 
