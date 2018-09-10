@@ -7,10 +7,10 @@ const socket = io(server_url);
 console.log(`connecting to ${server_url}`);
 
 socket.on('start', function() {
-  console.log('This player is the one to start.');
+  console.log('You start the game. Please send the first number.');
   // initial number in range [50, 150)
   let init_number = 50 + Math.floor(Math.random() * 100);
-  console.log(`Sending ${init_number} to start the game`);
+  console.log(`You sent ${init_number} to start.`);
   socket.emit('number', init_number);
 });
 
@@ -24,20 +24,20 @@ socket.on('number', function(number) {
     step = 0;
   }
   let calculated_number = (number + step) / 3;
-  // eslint-disable-next-line max-len
-  console.log(`Received ${number}, added: ${step}, the result number to send is ${calculated_number}`);
+  console.log(`You received ${number}.`);
+  console.log(`You added: ${step}, sent ${calculated_number} to the other.`);
   socket.emit('number', calculated_number);
 });
 
 socket.on('game-over', function(message) {
   if (message.win) {
-    console.log('Winner!! :)');
+    console.log('You won! :)');
   } else {
-    console.log(':(');
+    console.log('You lost! :(');
   }
   socket.disconnect();
 });
 
 socket.on('disconnect', function(){
-  console.log('Disconnected from the server');
+  console.log('Disconnected from the server. Please restart to retry.');
 });
