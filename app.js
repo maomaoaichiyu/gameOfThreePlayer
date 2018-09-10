@@ -38,6 +38,10 @@ socket.on('game-over', function(message) {
   socket.disconnect();
 });
 
+socket.on('kickout', function() {
+  console.log('No more space in the game, the server has kicked you out.');
+});
+
 socket.on('connect', function() {
   console.log('You are connected to the server.');
 });
