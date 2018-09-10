@@ -38,6 +38,10 @@ socket.on('game-over', function(message) {
   socket.disconnect();
 });
 
+socket.on('connect', function() {
+  console.log('You are connected to the server.');
+});
+
 socket.on('disconnect', function(){
   console.log('Disconnected from the server. Please restart to retry.');
 });
